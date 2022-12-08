@@ -15,13 +15,21 @@ const ideaGrid = document.querySelector("#ideaGrid");
 const ideaCard = document.querySelector('#ideaCard');
 const ideaCardTop = document.querySelector('#ideaCardTop');
 
-// Event listeners 
-saveButton.addEventListener('click',addIdea )
+
+
 
 
 
 const addIdea = () => {
     const title = titleInput.value.trim()
     const body = bodyInput.value.trim()
-
+    console.log(title, body, "body")
 }
+
+
+
+
+
+// Event listeners 
+
+saveButton.addEventListener('click',addIdea )
