@@ -2,10 +2,10 @@
 
 
 const generateIdea = (idea={}) => {
-   let id  = () => idea.id || Date.now(); 
-   let title = () => idea.title
-   let body = () => idea.body
-   let starred = () => idea.star ? idea.star : false
+   const id  = () => idea.id || Date.now(); 
+   const title = () => idea.title
+   const body = () => idea.body
+   const starred = () => idea.star ? idea.star : false
    return {
     id: id(),
     title: title(),

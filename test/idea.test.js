@@ -12,9 +12,7 @@ describe('GenerateIdea', () => {
         expect(idea.body).toBe(body)
     })
     test('it should have an specific id', () => {
-        const idea = generateIdea({ id:10})
-        // console.log(idea.id,"<>>idea")
-        
+        const idea = generateIdea({ id:10})  
         expect(idea.id).toBe(10)
       })
 
