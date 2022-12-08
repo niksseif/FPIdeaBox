@@ -1,0 +1,37 @@
+{
+  "name": "FunctionalProgramming",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "npx parcel ./index.html"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    },
+    "testEnvironment": "jsdom"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niksseif/FPIdeaBox.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niksseif/FPIdeaBox/issues"
+  },
+  "homepage": "https://github.com/niksseif/FPIdeaBox#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "babel-jest": "^29.3.1",
+    "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
+    "parcel": "^2.8.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.20.5",
+    "ramda": "^0.28.0"
+  }
+}

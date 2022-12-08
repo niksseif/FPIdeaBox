@@ -535,34 +535,149 @@ function hmrAcceptRun(bundle, id) {
 //DOM related js
 var _idea = require("./idea");
 const app = ()=>{
-    var saveButton = document.querySelector(".save-button");
-    var showStarredButton = document.querySelector(".show-starred-ideas");
-    var searchButton = document.querySelector(".search-button");
-    var deleteButton = document.querySelector(".delete-button");
-    var whiteStarButton = document.querySelector("#whiteStar");
-    var redStarButton = document.querySelector("#redStar");
-    var titleInput = document.querySelector(".idea-title-input");
-    var bodyInput = document.querySelector(".idea-body-input");
-    var searchInput = document.querySelector("#searchBar");
-    var ideaGrid = document.querySelector("#ideaGrid");
-    var ideaCard = document.querySelector("#ideaCard");
-    var ideaCardTop = document.querySelector("#ideaCardTop");
-    saveButton.addEventListener("click", (e)=>{
+    const loadCards = (cards)=>{
+        cards.reduce((acc, card)=>{
+            acc.title = card.title;
+            acc.body = card.body;
+            acc.star = acc.star;
+            return acc;
+        }, {});
+    };
+    const ideas = [
+        {
+            title: "Hello Idea",
+            body: "Please work"
+        }
+    ];
+    console.log((0, _idea.card)(loadCards, ideas));
+    const saveButton = document.querySelector(".save-button");
+    const showStarredButton = document.querySelector(".show-starred-ideas");
+    const searchButton = document.querySelector(".search-button");
+    const deleteButton = document.querySelector(".delete-button");
+    const whiteStarButton = document.querySelector("#whiteStar");
+    const redStarButton = document.querySelector("#redStar");
+    const titleInput = document.querySelector(".idea-title-input");
+    const bodyInput = document.querySelector(".idea-body-input");
+    const searchInput = document.querySelector("#searchBar");
+    const ideaGrid = document.querySelector("#ideaGrid");
+    const ideaCard = document.querySelector("#ideaCard");
+    const ideaCardTop = document.querySelector("#ideaCardTop");
+    const addIdeas = ()=>{
+        // ideaOne; 
+        // loadCards
+        render();
+    };
+    const ideaBuilder = (idea)=>{
+        ideas.push(idea);
+        console.log(ideas, "<>>");
+    };
+    const createIdea = (fn, prefilledValue)=>{
+        const innerFunction = (liveInput)=>{
+            const output = fn(liveInput, prefilledValue);
+            return output;
+        };
+        return innerFunction;
+    };
+    const save = (e)=>{
         e.preventDefault();
         let resBody = bodyInput.value.trim();
         let resTitle = titleInput.value.trim();
-        let ideaFactory = (0, _idea.idea)({
-            resTitle,
-            resBody,
-            star: false
+        let ideaOne = createIdea(ideaBuilder, {
+            title: resTitle,
+            body: resBody
         });
-        console.log(ideaFactory, "<>>factory");
-        ideaGrid.innerHTML += `${ideaFactory.id} -${ideaFactory.resTitle} - ${ideaFactory.resBody} - ${ideaFactory.star} `;
-    });
+        let i = ideaOne({
+            title: resTitle,
+            body: resBody
+        });
+    };
+    const render = ()=>{
+        ideas.reduce((acc, idea)=>{
+            acc += `<section class="idea-card" id="${idea.id}">
+            <div class="idea-card-top dark-purple" id="ideaCardTop">
+                <img src="assets/star.svg" alt="White star" class="star-button">
+                <img src="assets/delete.svg" alt="delete" id="deleteButton" class="delete-button">
+            </div>
+            <div class="idea-card-main">
+                <h3 class="idea-title bold">${idea.title}</h3>
+                <p>${ideas.body} </p>
+            </div>
+            <button class="comment-button">
+                <img class="comment-icon" src="assets/comment.svg" alt="comment">
+                <h3 class="bold comment">Comment</h3>
+            </button>
+            </section>`;
+        }, "");
+    };
+    saveButton.addEventListener("click", save);
+    window.addEventListener("load", addIdeas);
 };
 app();
 
 },{"./idea":"fK0oc"}],"fK0oc":[function(require,module,exports) {
+// An idea class has title, body, star, and id
+// functionality : 
+// Update Idea and preferably save to storage where the idea star is becomes true
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "card", ()=>card);
+let ideas = [
+    {
+        id: 1,
+        title: "what",
+        body: "hehehe",
+        star: false
+    }
+];
+const getIdeas = (ideas)=>ideas;
+const setIdeas = (value)=>value;
+const updateIdea = (fn, prefilledValue)=>{
+    const composingFunction = (liveInput)=>{
+        const output = fn(liveInput, prefilledValue);
+        return output;
+    };
+    return composingFunction;
+};
+const card = updateIdea(getIdeas, [
+    {
+        id: 2,
+        title: "what",
+        body: "hehehe",
+        star: false
+    }
+]);
+card(ideas);
+console.log(card, "<>>card");
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
 
 },{}]},["1eQiw","lxTXR"], "lxTXR", "parcelRequire5329")
 
