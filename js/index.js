@@ -1,4 +1,4 @@
-import { app} from './app'
+import { app, saveToStorage} from './app'
 
 
 // this is where all the DOM manipulation live  
@@ -19,11 +19,11 @@ const ideaCardTop = document.querySelector('#ideaCardTop');
 
 
 
-
+// where do I need to make ideas array???
 const addIdea = () => {
     const title = titleInput.value.trim()
     const body = bodyInput.value.trim()
-    console.log(title, body, "body")
+    saveToStorage({title, body})
 }
 
 

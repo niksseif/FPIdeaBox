@@ -15,6 +15,11 @@ const saveToStorage = (idea) => {
 // const deleteFromStorage = () => {
 //     localStorage.removeItem('idea')
 // }
+const storageRetrieveIdea = () => {
+    const getIdea = localStorage.getItem('idea')
+    const savedIdea = JSON.parse(getIdea)
+
+}
 const app = () => {
 
 
@@ -22,4 +27,4 @@ const app = () => {
 
 }
 app()
-module.exports = { app, saveToStorage }
+module.exports = { app, saveToStorage, storageRetrieveIdea }
