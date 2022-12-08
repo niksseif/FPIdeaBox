@@ -1,4 +1,4 @@
-import {app, saveToStorage, deleteFromStorage} from '../js/app'
+import {app, saveToStorage} from '../js/app'
 import {generateIdea} from '../js/idea'
 
 describe('save to storage', () => {

@@ -22,4 +22,4 @@ const app = () => {
 
 }
 app()
-module.exports = { app, saveToStorage, deleteFromStorage }
+module.exports = { app, saveToStorage }
