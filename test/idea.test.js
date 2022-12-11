@@ -3,7 +3,7 @@ import {generateIdea} from "../js/idea.js";
 describe('GenerateIdea', () => {
     test('it should add a title', () => {
       const title = 'What'   
-      const idea = generateIdea({title})
+      const idea = generateIdea({title})   
       expect(idea.title).toBe(title)
     })
     test('it should add a body', () => {

@@ -13,11 +13,3 @@ describe('save to storage', () => {
 
     
 })
-// describe('remove from storage', () => {
-//     test('remove idea from local storage', () => {
-//         const idea = generateIdea({ title: 'Please', body:'work'})
-//         // saveToStorage(idea)
-
-//         // expect(deleteFromStorage(idea)).toBe({})
-//     })
-// })

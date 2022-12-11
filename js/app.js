@@ -12,9 +12,6 @@ const saveToStorage = (idea) => {
     }
     localStorage.setItem('idea', JSON.stringify(newIdea))
 }
-// const deleteFromStorage = () => {
-//     localStorage.removeItem('idea')
-// }
 const storageRetrieveIdea = () => {
     const getIdea = localStorage.getItem('idea')
     const savedIdea = JSON.parse(getIdea)
