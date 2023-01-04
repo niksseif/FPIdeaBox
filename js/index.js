@@ -2,6 +2,7 @@ import {  saveToStorage, updateIdea,retrieveIdeas} from './localStorage'
 import { generateIdea } from './idea'
 import {app} from './app'
 import {comment } from '../assets/comment.svg'
+console.log(comment)
 import {star} from '../assets/star.svg';
 import { dl } from '../assets/delete.svg'
 
@@ -32,35 +33,31 @@ const addIdea = () => {
     render(result)
     clearForm()
 }
-// ----- Retrieve Idea from storage 
-//@ after adding idea we need to retrieve ideas from the local storage 
-//@ after that we can render the ideas into cards 
-
 
 const clearForm = () => {
  IdeaForm.reset()
 }
 const render = (ideas) => {
     ideaGrid.innerHTML = "";
-    ideas.map((idea) => {
-        ideaGrid.innerHTML += `
-        <section class="idea-card" id="${idea.id}">
-       <div class="idea-card-top dark-purple" id="ideaCardTop">
-         <img src=${star} alt="star" class="star-button">
-         <img src=${dl} alt="delete" id="deleteButton" class="delete-button">
-       </div>
-       <div class="idea-card-main">
-         <h3 class="idea-title bold">${idea.title}</h3>
-         <p>${idea.body} </p>
-       </div>
-       <button class="comment-button">
-         <img class="comment-icon" src=${comment} alt="comment">
-         <h3 class="bold comment">Comment</h3>
-       </button>
-     </section>`
-    })
+    ideas.map(addIdeaToCard)
 } 
-
+const addIdeaToCard = (idea) => {
+  ideaGrid.innerHTML += `
+      <section class="idea-card" id="${idea.id}">
+     <div class="idea-card-top dark-purple" id="ideaCardTop">
+       <img src=${star} alt="star" class="star-button">
+       <img src=${dl} alt="delete" id="deleteButton" class="delete-button">
+     </div>
+     <div class="idea-card-main">
+       <h3 class="idea-title bold">${idea.title}</h3>
+       <p>${idea.body} </p>
+     </div>
+     <button class="comment-button">
+       <img class="comment-icon" src=${comment} alt="comment">
+       <h3 class="bold comment">Comment</h3>
+     </button>
+   </section>`
+}
 
 
 
