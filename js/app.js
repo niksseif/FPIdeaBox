@@ -1,27 +1,23 @@
 //DOM related js
 import {generateIdea} from './idea.js'
+import { saveToStorage } from './localStorage'
 
 
-// save to storage 
-const saveToStorage = (idea) => {
-    let newIdea = {
-        id: idea.id,
-        title: idea.title,
-        body: idea.body,
-        star: idea.star
-    }
-    localStorage.setItem('idea', JSON.stringify(newIdea))
-}
-const storageRetrieveIdea = () => {
-    const getIdea = localStorage.getItem('idea')
-    const savedIdea = JSON.parse(getIdea)
-
-}
 const app = () => {
+let ideas = []
+const addIdea = (newIdea) => {
+    console.log(newIdea,"<>>newIdea")
+    ideas = [...ideas, generateIdea(newIdea)]
+    console.log(ideas,"<>>>ideas")
+    saveToStorage(ideas)
+
+}
 
 
 
-
+return {
+    addIdea, ideas,
+}
 }
 app()
-module.exports = { app, saveToStorage, storageRetrieveIdea }
+module.exports = { app }
