@@ -14,5 +14,8 @@ const retrieveIdeas = () => {
     const parsedIdea = JSON.parse(getIdea)
     return parsedIdea;   
 }
+const deleteFromStorage = (idea) => {
+    localStorage.removeItem(idea)
+}
 
-module.exports = { saveToStorage, updateIdea, retrieveIdeas}
+module.exports = { saveToStorage, updateIdea, retrieveIdeas, deleteFromStorage}

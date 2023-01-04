@@ -1,22 +1,25 @@
 //DOM related js
 import {generateIdea} from './idea.js'
-import { saveToStorage } from './localStorage'
+import { saveToStorage, retrieveIdeas } from './localStorage'
 
 
 const app = () => {
 let ideas = []
 const addIdea = (newIdea) => {
-    console.log(newIdea,"<>>newIdea")
     ideas = [...ideas, generateIdea(newIdea)]
-    console.log(ideas,"<>>>ideas")
     saveToStorage(ideas)
-
+}
+const getIdeas = () => {
+    const result = retrieveIdeas()
+    return result; 
 }
 
 
 
 return {
-    addIdea, ideas,
+    addIdea, 
+    ideas,
+    getIdeas
 }
 }
 app()
