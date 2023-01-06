@@ -46,6 +46,12 @@ const toggleStars = (e) => {
 }
 const findStarDeleteBtn = (event) => event.target.classList.contains('star-button') ? toggleStars(event) : removeIdeaFromDOM(event);
 
+const starredIdeas = (e) => {
+  e.preventDefault()
+  let res = application.showStars()
+  render(res)
+}
+
 const clearForm = () => {
  IdeaForm.reset()
 }
@@ -80,3 +86,4 @@ const addItemToCard = (idea) => {
 
 saveButton.addEventListener('click',addIdeaToDOM)
 ideaGrid.addEventListener('click', findStarDeleteBtn)
+showStarredButton.addEventListener('click', starredIdeas )

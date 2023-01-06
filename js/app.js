@@ -1,6 +1,6 @@
 //DOM related js
 import {generateIdea} from './idea.js'
-import { saveToStorage, retrieveIdeas,removeIdea } from './localStorage'
+import { saveToStorage, retrieveIdeas,deleteFromStorage } from './localStorage'
 
 
 const app = () => {
@@ -14,16 +14,21 @@ const getIdeas = () => {
 }
 
 const removeIdea = (id) => {
-    const result = ideas.filter((idea) => idea.id !== id)
-    ideas =  [...result]
+    ideas = ideas.filter((idea) => idea.id !== id)
+    const selectedIdea = ideas.filter((idea) => idea.id === id)
+    deleteFromStorage(selectedIdea)
     saveToStorage(ideas)
     return retrieveIdeas()
 }
-// if the Idea id matches the id idea star will get !idea.star
+
 const toggleStar = (id) => {
    ideas.filter(idea => idea.id === id ? idea.star = !idea.star : 'the ID is not matching')
    saveToStorage(ideas)
    return retrieveIdeas() 
+}
+const showStars = () => {
+    const res = retrieveIdeas()
+    return res.filter(idea => idea.star)
 }
 
 
@@ -32,7 +37,8 @@ return {
     ideas,
     getIdeas, 
     removeIdea, 
-    toggleStar
+    toggleStar,
+    showStars
 }
 }
 app()
