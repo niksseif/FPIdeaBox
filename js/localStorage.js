@@ -1,6 +1,7 @@
 // save to storage 
 const saveToStorage = (idea) => {
     localStorage.setItem('ideas', JSON.stringify([ ...idea]))
+   
 
 }
 const updateIdea = () => {
