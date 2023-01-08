@@ -14,7 +14,7 @@ const whiteStarButton = document.querySelector('#whiteStar')
 const redStarButton = document.querySelector('#redStar')
 const titleInput = document.querySelector(".idea-title-input");
 const bodyInput = document.querySelector(".idea-body-input");
-const searchInput = document.querySelector("#searchBar");
+const searchInput = document.querySelector("#search-bar");
 const ideaGrid = document.querySelector("#ideaGrid");
 const ideaCard = document.querySelector('#ideaCard');
 const ideaCardTop = document.querySelector('#ideaCardTop');
@@ -31,27 +31,52 @@ const addIdeaToDOM = () => {
     render(result)
     clearForm()
 }
+
 const removeIdeaFromDOM = (e) => {
   e.preventDefault()
   const id = parseInt(e.target.parentNode.parentNode.id)
   const res = application.removeIdea(id)
   render(res)
 }
+
 const toggleStars = (e) => {
   e.preventDefault()
   const id = parseInt(e.target.parentNode.parentNode.id)
   const res = application.toggleStar(id)
-  return render(res)
-  
+  return render(res) 
 }
+
 const findStarDeleteBtn = (event) => event.target.classList.contains('star-button') ? toggleStars(event) : removeIdeaFromDOM(event);
 
-const starredIdeas = (e) => {
+const showStarredIdeas = (e) => { 
   e.preventDefault()
-  let res = application.showStars()
-  render(res)
+  switch(application.toggled) {
+    case false:
+      const res = application.showStars()
+      render(res)
+      e.target.innerText = "Show ideas"
+      application.toggled = !application.toggled  
+      break;
+    case true:
+        const result = application.getIdeas();
+        render(result)
+        e.target.innerText = "Show starred Ideas"
+        application.toggled = !application.toggled
+        break;
+  }
 }
+const searchIdeas = (e) => {
+  const searchTerm = e.target.value;
+  application.setSearchTerm(searchTerm)
+  const res = application.findSearchedIdeas()
+  render(res)
+  application.setSearchTerm('')
+}
+const loadPage = () => {
+  let result = application.getIdeas()
+  render(result)
 
+}
 const clearForm = () => {
  IdeaForm.reset()
 }
@@ -59,6 +84,7 @@ const render = (ideas) => {
     ideaGrid.innerHTML = "";
     ideas.map(addItemToCard)
 } 
+
 const addItemToCard = (idea) => {
   ideaGrid.innerHTML += `
       <section class="idea-card" id="${idea.id}">
@@ -86,4 +112,6 @@ const addItemToCard = (idea) => {
 
 saveButton.addEventListener('click',addIdeaToDOM)
 ideaGrid.addEventListener('click', findStarDeleteBtn)
-showStarredButton.addEventListener('click', starredIdeas )
+showStarredButton.addEventListener('click', showStarredIdeas )
+searchInput.addEventListener('input', searchIdeas)
+window.onload = loadPage

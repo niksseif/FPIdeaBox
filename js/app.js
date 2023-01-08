@@ -4,13 +4,15 @@ import { saveToStorage, retrieveIdeas,deleteFromStorage } from './localStorage'
 
 
 const app = () => {
-let ideas = []
-    const addIdea = (newIdea) => {
-        ideas = [...ideas, generateIdea(newIdea)]
-        saveToStorage(ideas)
+let ideas = retrieveIdeas();
+let toggled = false;
+let searchTerm = '';
+const addIdea = (newIdea) => {
+    ideas = [...ideas, generateIdea(newIdea)]
+    saveToStorage(ideas)
 }
 const getIdeas = () => {
-    return  retrieveIdeas()
+    return  ideas;
 }
 
 const removeIdea = (id) => {
@@ -18,27 +20,39 @@ const removeIdea = (id) => {
     const selectedIdea = ideas.filter((idea) => idea.id === id)
     deleteFromStorage(selectedIdea)
     saveToStorage(ideas)
-    return retrieveIdeas()
+    return ideas;
 }
 
 const toggleStar = (id) => {
    ideas.filter(idea => idea.id === id ? idea.star = !idea.star : 'the ID is not matching')
    saveToStorage(ideas)
-   return retrieveIdeas() 
+    return ideas
 }
 const showStars = () => {
-    const res = retrieveIdeas()
-    return res.filter(idea => idea.star)
+    return ideas.filter(idea => idea.star)
+}
+const setSearchTerm = (value) => {
+    searchTerm = value
+}
+const findSearchedIdeas = () => {
+   
+    if(!searchTerm.isEmpty) {
+      return ideas.filter((idea) => idea.title.includes(searchTerm)  || idea.body.includes(searchTerm)) 
+    }
+    return 
 }
 
 
 return {
     addIdea, 
-    ideas,
     getIdeas, 
     removeIdea, 
     toggleStar,
-    showStars
+    showStars, 
+    // loadIdeas, 
+    toggled,
+    setSearchTerm,
+    findSearchedIdeas
 }
 }
 app()
