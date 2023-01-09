@@ -7,7 +7,9 @@ import {
 } from "./localStorage";
 
 const app = () => {
-  let ideas = retrieveIdeas();
+  !retrieveIdeas()
+    ? (ideas = [{ id: 1, title: "Hello", body: "hello to Idea Box" }])
+    : (ideas = retrieveIdeas());
   let toggled = false;
   let searchTerm = "";
   const addIdea = (newIdea) => {
@@ -15,7 +17,9 @@ const app = () => {
     saveToStorage(ideas);
   };
 
-  const getIdeas = () => ideas;
+  const getIdeas = () => {
+    return ideas;
+  };
 
   const removeIdea = (id) => {
     ideas = ideas.filter((idea) => idea.id !== id);
@@ -59,5 +63,4 @@ const app = () => {
     findSearchedIdeas,
   };
 };
-app();
 module.exports = { app };
