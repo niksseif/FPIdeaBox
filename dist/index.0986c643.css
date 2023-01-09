@@ -31,12 +31,15 @@ img {
 }
 
 .dark-purple {
-  background-color: # #5356a4;
+  background-color: ##5356a4;
   border-radius: 0;
   font-size: larger;
 }
 
-.save-button, .show-starred-ideas, .comment-button, .search-button {
+.save-button,
+.show-starred-ideas,
+.comment-button,
+.search-button {
   cursor: pointer;
 }
 
@@ -82,7 +85,10 @@ h4 {
   color: #bfbfdd;
 }
 
-h1, .show-starred-ideas, .save-button, .comment {
+h1,
+.show-starred-ideas,
+.save-button,
+.comment {
   color: #e9e9f3;
 }
 
@@ -143,7 +149,8 @@ h1 {
   background-color: #353567;
 }
 
-.save-button:disabled, .save-button[disabled] {
+.save-button:disabled,
+.save-button[disabled] {
   cursor: none;
   background-color: #eaeaf4;
   border: 1px solid #999;
@@ -199,14 +206,15 @@ h1 {
 }
 
 .idea-card-main {
-  height: int% ;
+  height: int%;
   overflow-wrap: break-word;
   background-color: #fff;
   border: 1px solid #1f1f3d;
   padding: 7%;
 }
 
-.idea-title, .user-text {
+.idea-title,
+.user-text {
   padding: none;
   color: #1f1f3d;
   margin-top: 3%;

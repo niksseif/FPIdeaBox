@@ -1,22 +1,24 @@
-// save to storage 
+// save to storage
 const saveToStorage = (idea) => {
-    localStorage.setItem('ideas', JSON.stringify([ ...idea]))
-   
-
-}
+  localStorage.setItem("ideas", JSON.stringify([...idea]));
+};
 const updateIdea = () => {
-    const getIdea = localStorage.getItem('ideas')
-    const parsedIdea = JSON.parse(getIdea)
-    return parsedIdea.star ? true : false
-
-}
+  const getIdea = localStorage.getItem("ideas");
+  const parsedIdea = JSON.parse(getIdea);
+  return parsedIdea.star ? true : false;
+};
 const retrieveIdeas = () => {
-    const getIdea = localStorage.getItem('ideas')
-    const parsedIdea = JSON.parse(getIdea)
-    return parsedIdea;   
-}
+  const getIdea = localStorage.getItem("ideas");
+  const parsedIdea = JSON.parse(getIdea);
+  return parsedIdea;
+};
 const deleteFromStorage = (idea) => {
-    localStorage.removeItem(idea)
-}
+  localStorage.removeItem(idea);
+};
 
-module.exports = { saveToStorage, updateIdea, retrieveIdeas, deleteFromStorage}
+module.exports = {
+  saveToStorage,
+  updateIdea,
+  retrieveIdeas,
+  deleteFromStorage,
+};
