@@ -93,3 +93,19 @@ const app = () => {
   };
 };
 ```
+## Composition
+Composition is a way of combining two or more functions to produce a new function. In functional programming, composition is a key concept, due to its ability to create simpler, more concise and more maintainable code. It allows you to create complex behaviors out of simpler pieces. Composition also allows you to easily reuse code, as it is easier to pass the result of one function to another.
+```
+const generateIdea = (idea) => {
+  const makeId = () => idea.id || Date.now();
+  const makeTitle = () => idea.title;
+  const makeBody = () => idea.body;
+  const makeStar = () => (idea.star ? idea.star : false);
+
+  const addId = (idea) => ({ ...idea, id: makeId() });
+  const addTitle = (idea) => ({ ...idea, title: makeTitle() });
+  const addBody = (idea) => ({ ...idea, body: makeBody() });
+  const addStarred = (idea) => ({ ...idea, star: makeStar() });
+  return R.pipe(addId, addTitle, addBody, addStarred)(idea);
+};
+```
