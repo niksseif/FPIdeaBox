@@ -1,5 +1,5 @@
 # FP - IdeaBox
-This is my attempt to develop an Idea Box project with Functional programming.
+This is my attempt to develop an Idea Box project using Functional programming.
 
 ## Running the app
 - Clone the repo: git clone https://github.com/niksseif/FPIdeaBox.git
@@ -9,11 +9,11 @@ This is my attempt to develop an Idea Box project with Functional programming.
 ## Running the tests
 - Follow the same installation steps as above, then:
 - Run the tests: npm test
-- Alternatively, run the tests in watch mode: npm run test:watch
 
 ## Functional programming:
 
 Functional programming is a programming paradigm in which programs are constructed by applying and composing functions. It is based on pure functions, meaning that functions are independent of state and have no side effects. Functional programming is also characterized by its use of immutable data, which means that data cannot be modified once it has been created. The goal of functional programming is to develop programs that are more concise, easier to debug, and more maintainable than programs written in other paradigms.
+Here are some instances where I attempted to use functional programming concepts.
 
 ### Pure functions
 A pure function is a function that consistently generates the same output for a given set of input values and has no side effects. This indicates that the function can be called several times with the same arguments and produce the same result each time. Pure functions are deterministic, which means that they do not affect the state of a program or system outside of the function's scope. Pure functions are a crucial component of functional programming since they help to ensure that programs are predictable and clear of unexpected side effects. Here is a sample of implemented pure functions in this application.
